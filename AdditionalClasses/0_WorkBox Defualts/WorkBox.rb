@@ -15,22 +15,18 @@ class WorkBox
     @name = options[:name] || "Defualt"
     # set offset location:
     case index
-    when 0 # TR
+    when 0 # TL
       @x = 0
       @y = 0
-      @bg_c = 0xFF_158835
-    when 1 # TL
+    when 1 # TR
       @x = screen_width
       @y = 0
-      @bg_c = 0xFF_156ff4
-    when 2 # BR
+    when 2 # BL
       @x = 0
       @y = screen_height
-      @bg_c = 0xFF_d4124f
-    else   # BL
+    else   # BR
       @x = screen_width
       @y = screen_height
-      @bg_c = 0xFF_5a6f53
     end
     # for testing:
     @slider_percentage = 0.0

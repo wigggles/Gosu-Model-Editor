@@ -8,6 +8,7 @@ class ModelBox < WorkBox
   def initialize(**options)
     super(options)
     @name = "Model Viewer"
+    @bg_c = 0xFF_5a6f53
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Changes called to from the outside.

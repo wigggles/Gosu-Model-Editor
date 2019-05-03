@@ -8,6 +8,7 @@ class XPlaneBox < WorkBox
   def initialize(**options)
     super(options)
     @name = "X Plane Editor"
+    @bg_c = 0xFF_d4124f
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Changes called to from the outside.

@@ -8,6 +8,7 @@ class ZPlaneBox < WorkBox
   def initialize(**options)
     super(options)
     @name = "Z Plane Editor"
+    @bg_c = 0xFF_156ff4
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Changes called to from the outside.

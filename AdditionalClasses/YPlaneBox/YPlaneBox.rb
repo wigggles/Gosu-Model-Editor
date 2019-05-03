@@ -8,6 +8,7 @@ class YPlaneBox < WorkBox
   def initialize(**options)
     super(options)
     @name = "Y Plane Editor"
+    @bg_c = 0xFF_158835
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Changes called to from the outside.
