@@ -11,6 +11,14 @@ class HUD
   #D: Create Klass object.
   #---------------------------------------------------------------------------------------------------------
   def initialize(**options)
+    @text_displays = { # starting location of the text boxes:
+      :test_text    => {:x => 10, :y => 8},
+      :camera_name  => {:x => 10, :y => 40},
+    }
+    # sprite screen placement and properties
+    @slider_displays = { # starting location of interacatables:
+      :camera_zoom   => {:y => 24}
+    }
     # out side pointers:
     @camera  = options[:Camera] || nil
     # interal stuff:
@@ -32,28 +40,6 @@ class HUD
       end
       slider_object.update_called
     end
-  end
-  #---------------------------------------------------------------------------------------------------------
-  #D: All the text display containers.
-  #---------------------------------------------------------------------------------------------------------
-  def add_text_boxes
-    # create display text boxes
-    @text_boxes = {}
-    def_options = {:size => 18, :z => 10001}
-    @text_displays = { # starting location of the text boxes:
-      :test_text    => {:x => 10, :y => 8},
-      :camera_name  => {:x => 10, :y => 40},
-    }
-    # make the empty string display boxes:
-    @text_displays.each do |display_item, text_options|
-      text_options[:text] = display_item.to_s
-      text_options.merge!(def_options)
-      text_options[:x] += @camera.screen_xpos
-      text_options[:y] += @camera.screen_ypos
-      @text_boxes[display_item] = Text_Box.new("", text_options)
-    end
-    # create the first cache of the data info to display
-    update_text_strings
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Update what the current text being displayed should say.
@@ -82,10 +68,6 @@ class HUD
       # where to start the slider value off at?
       :start_point => :middle
     }
-    # sprite screen placement and properties
-    @slider_displays = { # starting location of interacatables:
-      :camera_zoom   => {:y => 24}
-    }
     # create all the refrenceable slider bars:
     @slider_displays.each do |display_item, display_options|
       display_options.merge!(def_options)
@@ -95,6 +77,24 @@ class HUD
       # create the object
       @interactables[display_item] = Sprite_Scroll_Bar.new(display_options)
     end
+  end
+  #---------------------------------------------------------------------------------------------------------
+  #D: All the text display containers.
+  #---------------------------------------------------------------------------------------------------------
+  def add_text_boxes
+    # create display text boxes
+    @text_boxes = {}
+    def_options = {:size => 18, :z => 10001}
+    # make the empty string display boxes:
+    @text_displays.each do |display_item, text_options|
+      text_options[:text] = display_item.to_s
+      text_options.merge!(def_options)
+      text_options[:x] += @camera.screen_xpos
+      text_options[:y] += @camera.screen_ypos
+      @text_boxes[display_item] = Text_Box.new("", text_options)
+    end
+    # create the first cache of the data info to display
+    update_text_strings
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Gosu::Window.tick looping method call threw.
