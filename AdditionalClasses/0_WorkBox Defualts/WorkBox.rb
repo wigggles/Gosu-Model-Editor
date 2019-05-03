@@ -50,7 +50,7 @@ class WorkBox
   #---------------------------------------------------------------------------------------------------------
   def update
     if @hud.nil?
-      @hud = HUD.new({ :Camera => self })
+      @hud = HUD.new({ :BoxOwner => self })
     else
       @hud.update
     end

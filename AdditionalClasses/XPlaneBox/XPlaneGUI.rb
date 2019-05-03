@@ -32,7 +32,7 @@ class XPlaneGUI < HUD
       next unless slider_object.changed?
       case display_item
       when :camera_zoom
-        @camera.test_slider(slider_object.percentage)
+        @boxowner.test_slider(slider_object.percentage)
       end
       slider_object.update_called
     end
@@ -41,10 +41,10 @@ class XPlaneGUI < HUD
   #D: Update what the current text being displayed should say.
   #---------------------------------------------------------------------------------------------------------
   def update_text_strings
-    return if @text_boxes.nil? || @camera.nil?
+    return if @text_boxes.nil? || @boxowner.nil?
     # Testing "Hello World"
-    @text_boxes[:test_text].text    = "% #{@camera.slider_percentage.round(4)}"
-    @text_boxes[:camera_name].text  = "#{@camera.name}"
+    @text_boxes[:test_text].text    = "% #{@boxowner.slider_percentage.round(4)}"
+    @text_boxes[:camera_name].text  = "#{@boxowner.name}"
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Create interactable sprite mouse items.
@@ -54,7 +54,7 @@ class XPlaneGUI < HUD
     # configure the defualt display settings:
     def_options = {
       # starting locaion for offsets performed later:
-      :x => @camera.screen_xpos, :z => 10000,
+      :x => @boxowner.screen_xpos, :z => 10000,
       # bar is width x height of object: 
       :bar => [250, 10], :color => [0xFF_66089f, 0xFF_cc22ff],
       # :way is an integer for vertical is '0', horizontal is '1', 
@@ -69,7 +69,7 @@ class XPlaneGUI < HUD
       display_options.merge!(def_options)
       display_options[:text] = display_item.to_s
       # move to screen owner position camera:
-      display_options[:y] += @camera.screen_ypos
+      display_options[:y] += @boxowner.screen_ypos
       # create the object
       @interactables[display_item] = Sprite_Scroll_Bar.new(display_options)
     end

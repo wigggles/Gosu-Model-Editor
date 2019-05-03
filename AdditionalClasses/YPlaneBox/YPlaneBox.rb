@@ -20,7 +20,7 @@ class YPlaneBox < WorkBox
   #---------------------------------------------------------------------------------------------------------
   def update
     if @hud.nil?
-      @hud = YPlaneGUI.new({ :Camera => self })
+      @hud = YPlaneGUI.new({ :BoxOwner => self })
     else
       @hud.update
     end

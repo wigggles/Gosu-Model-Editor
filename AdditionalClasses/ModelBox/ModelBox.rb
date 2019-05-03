@@ -20,7 +20,7 @@ class ModelBox < WorkBox
   #---------------------------------------------------------------------------------------------------------
   def update
     if @hud.nil?
-      @hud = ModelGUI.new({ :Camera => self })
+      @hud = ModelGUI.new({ :BoxOwner => self })
     else
       @hud.update
     end

@@ -20,7 +20,7 @@ class XPlaneBox < WorkBox
   #---------------------------------------------------------------------------------------------------------
   def update
     if @hud.nil?
-      @hud = XPlaneGUI.new({ :Camera => self })
+      @hud = XPlaneGUI.new({ :BoxOwner => self })
     else
       @hud.update
     end

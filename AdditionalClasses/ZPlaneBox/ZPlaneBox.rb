@@ -20,7 +20,7 @@ class ZPlaneBox < WorkBox
   #---------------------------------------------------------------------------------------------------------
   def update
     if @hud.nil?
-      @hud = ZPlaneGUI.new({ :Camera => self })
+      @hud = ZPlaneGUI.new({ :BoxOwner => self })
     else
       @hud.update
     end

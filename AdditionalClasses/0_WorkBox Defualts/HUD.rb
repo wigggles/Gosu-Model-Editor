@@ -10,7 +10,7 @@ class HUD
   def initialize(**options)
     create_objects
     # out side pointers:
-    @camera  = options[:Camera] || nil
+    @boxowner  = options[:BoxOwner] || nil
     # interal stuff:
     @update_ticker = 0 # time between text string display updates.
     @font = $program.font(nil, 18)
@@ -53,8 +53,8 @@ class HUD
     @text_displays.each do |display_item, text_options|
       text_options[:text] = display_item.to_s
       text_options.merge!(def_options)
-      text_options[:x] += @camera.screen_xpos
-      text_options[:y] += @camera.screen_ypos
+      text_options[:x] += @boxowner.screen_xpos
+      text_options[:y] += @boxowner.screen_ypos
       @text_boxes[display_item] = Text_Box.new("", text_options)
     end
     # create the first cache of the data info to display
@@ -72,7 +72,7 @@ class HUD
     else
       @update_ticker -= 1
     end
-    return if @camera.nil?
+    return if @boxowner.nil?
     @interactables.each_value do |sprite|
       sprite.update unless sprite.nil?
     end
