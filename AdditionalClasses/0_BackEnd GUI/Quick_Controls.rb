@@ -7,37 +7,6 @@
 #===============================================================================================================================
 module QuickControls
 =begin
-  User defined input mappings and current button/key states for Input related statments.
---------------------------------------       --------------------------------------       --------------------------------------
-		 Avaliable Control Schemes:                         |     Tack Buttons: *For an xbox 360 Controler*     
-  --------------------------------------                |                             
-		   Menu Navigation                                  |                             
-        :menu_up                                        |                 gp_0  = A
-        :menu_down                                      |                 gp_1  = B
-        :menu_left                                      |                 gp_2  = X
-        :menu_right                                     |                 gp_3  = Y
-        :menu_scroll_up                                 |                 gp_cl = Back
-        :menu_scroll_down                               |                 gp_cm = XBOX button
-        :menu_action                                    |                 gp_cr = Start
-  --------------------------------------                |                 gp_lbump = LB
-      Player Controls  	                                |                 gp_rbump = RB
-        :move_up                                        |                 gp_ltrigger = LT
-        :move_down                                      |                 gp_rtrigger = RT
-        :move_left                                      |                 gp_ls_click = LStick clicked down
-        :move_right                                     |                 gp_rs_click = RStick clicked down
-        :move_jump                                      |                 
-        :move_sprint                                    |                 
-        :attack_one                                     |                 
-        :pause_menu                                     |                 
-  --------------------------------------                |            Digital Pad and Joy Stick:
-		  Misc Standards                                    |                     gp_down
-        :action_key                                     |                     gp_up
-        :mouse_lclick                                   |                     gp_left
-        :mouse_rclick                                   |                     gp_right
-        :cancel_action                                  |          **  Does ALL anolog stick input **
-        :debug_action_one                               |                      
-        :debug_action_two                               |
-
 --------------------------------------       --------------------------------------       --------------------------------------
 Basic Use:
    $program.holding?(:move_left)    -=- Check to see if any input key used for player movement to the left has been triggered.   

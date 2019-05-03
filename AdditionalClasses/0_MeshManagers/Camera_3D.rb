@@ -1,5 +1,6 @@
-
-#=====================================================================================================================================================
+#===========================================================================================================
+# !!!   Basic3D_Object.rb  |  Used for the perspective point of the viewer during openGL draw operations.
+#===========================================================================================================
 class Camera3D_Object < Basic3D_Object # @x, @y, @z are managed from a super class.
   attr_accessor :fov, :near, :far, :ratio, :tx, :ty, :tz, :vert_orintation, :speed, :axial
   DEBUG_PRINT_WAIT = 20 # time between terminal information dumps, set nil to disable print out.
@@ -107,10 +108,10 @@ class Camera3D_Object < Basic3D_Object # @x, @y, @z are managed from a super cla
     # rotate all 3D drawing after this call on camera viewing axis angle. Think world view angle.
     @angle[0] += 1.0 if DEBUG_SPIN
   end
-  #-------------------------------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------
   #D: Called from $program Gosu::Window inside the draw method que. This is called after the interjection of gl_draw function.
   #D: At this location you can contruct a HUD for the viewing 3D environment.
-  #-------------------------------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------
   def draw
     unless DEBUG_PRINT_WAIT.nil?
       @string = get_debug_string
@@ -152,15 +153,15 @@ class Camera3D_Object < Basic3D_Object # @x, @y, @z are managed from a super cla
     # glRotatef(angle, X axis scale, Y axis scale, Z axis scale)
     glRotatef(@angle[0], @vert_orintation[0], @vert_orintation[1], @vert_orintation[2])
   end
-  #-------------------------------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------
   #D: Called when its time to release the object to GC.
   #---------------------------------------------------------------------------------------------------------
   def destroy
 
   end
-  #-------------------------------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------
   #D: String used to convey usefull information to an area where the user can see it.
-  #-------------------------------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------
   def get_debug_string
     s =  "3D Camera: [ #{@x.round(2)}, #{@y.round(2)}, #{@z.round(2)} ]\n"
     s += "  T[ #{@tx.round(2)}, #{@ty.round(2)}, #{@tz.round(2)} ]\n"

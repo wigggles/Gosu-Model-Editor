@@ -1,9 +1,9 @@
-#=====================================================================================================================================================
+#===========================================================================================================
 # This was provided by BestGuiGUi (415559768233476106)
 # As gosu does not do well with indexing texture images, this class handles OpenGL textures.
 # Their help with understanding OpenGL call functions is what built most of this project.
 # If you see them in the Gosu lib Discord server be sure to say hello!
-#=====================================================================================================================================================
+#===========================================================================================================
 module Yume
   class Texture
     attr_reader :tex_name, :width, :height
