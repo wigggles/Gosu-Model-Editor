@@ -15,25 +15,29 @@ class WorkBox
     @name = options[:name] || "Defualt"
     # set offset location:
     case index
-    when 0 # player 1
+    when 0 # TR
       @x = 0
       @y = 0
       @bg_c = 0xFF_158835
-    when 1 # player 2
+    when 1 # TL
       @x = screen_width
       @y = 0
       @bg_c = 0xFF_156ff4
-    when 2 # player 3
+    when 2 # BR
       @x = 0
       @y = screen_height
       @bg_c = 0xFF_d4124f
-    else # screen 4
+    else   # BL
       @x = screen_width
       @y = screen_height
       @bg_c = 0xFF_5a6f53
     end
     # for testing:
     @slider_percentage = 0.0
+  end
+  #---------------------------------------------------------------------------------------------------------
+  def self.active_state
+    return @@active_state
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Changes called to from the outside.
@@ -95,7 +99,7 @@ class WorkBox
   #D: This is used for multiplayer.
   #---------------------------------------------------------------------------------------------------------
   def screen_width
-    if Konfigure::NUMBEROF_WINDOWS > 2
+    if Konfigure::NUMBEROF_BOXES > 2
       return $program.width / 2
     else
       return $program.width
@@ -105,7 +109,7 @@ class WorkBox
   #D: This is used for multiplayer.
   #---------------------------------------------------------------------------------------------------------
   def screen_height
-    if Konfigure::NUMBEROF_WINDOWS > 1
+    if Konfigure::NUMBEROF_BOXES > 1
       return $program.height / 2
     else
       return $program.height

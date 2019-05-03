@@ -135,9 +135,9 @@ class Program < Gosu::Window
       @input_lag = INPUT_LAG
       @buttons_down << id
     end
-    return unless PRINT_INPUT_KEY
+    #return unless PRINT_INPUT_KEY
     #print("Buttons currently held down: #{@buttons_down} T:#{@triggered}\n")
-    print("Window button pressed: (#{id}) which is (#{self.get_input_symbol(id).to_s})\n")
+    #print("Window button pressed: (#{id}) which is (#{self.get_input_symbol(id).to_s})\n")
   end
   #---------------------------------------------------------------------------------------------------------
   #D: Called when a button was held but was released. ID can be an integer or an array of integers that 
